@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+	<div class="main-content">
+		{% if code == -1 %}
+		<p>Uh oh! This url could not be found on SoundCloud.</p>
+		{% else %}
+		<p>The most popular part of this song is from {{ start }} to {{ end }}</p>
+		    <iframe id="iframe" width="20%" height="150" scrolling="no" frameborder="no" src={{ url }}>
+      		</iframe>
+      		<script type="text/javascript" src="../static/js/api.js"></script>
+      <script>
+      	(function(){
+    var widgetIframe = document.getElementById('iframe'),
+        widget       = SC.Widget(widgetIframe),
+        // newSoundUrl = 'http://api.soundcloud.com/tracks/13692671';
+
+    widget.bind(SC.Widget.Events.READY, function() {
+      // load new widget
+      widget.bind(SC.Widget.Events.FINISH, function() {
+        widget.load(url, {
+          show_artwork: false
+        });
+      });
+    });
+
+  }());
+
+      </script>
+		{% endif %}
+	</div>
+{% endblock %}

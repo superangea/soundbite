@@ -1,0 +1,18 @@
+body {
+/*	background-image: url("../background.jpeg");
+	background-repeat: no-repeat;
+	background-position: center;*/
+	/*background: rgb(193, 224, 216);*/
+	background: rgb(131, 210, 206);
+	font-family: 'Bitter', serif;
+}
+
+input[type=text] {
+	border: 0;
+	border-bottom: 2px solid #bbb
+	outline: 0;
+}
+
+input[type=text]:hover {
+	border: none;
+}

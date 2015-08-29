@@ -5,27 +5,46 @@
 		<p>Uh oh! This url could not be found on SoundCloud.</p>
 		{% else %}
 		<p>The most popular part of this song is from {{ start }} to {{ end }}</p>
-		    <iframe id="iframe" width="20%" height="150" scrolling="no" frameborder="no" src={{ url }}>
-      		</iframe>
-      		<script type="text/javascript" src="../static/js/api.js"></script>
-      <script>
-      	(function(){
-    var widgetIframe = document.getElementById('iframe'),
-        widget       = SC.Widget(widgetIframe),
-        // newSoundUrl = 'http://api.soundcloud.com/tracks/13692671';
-
-    widget.bind(SC.Widget.Events.READY, function() {
-      // load new widget
-      widget.bind(SC.Widget.Events.FINISH, function() {
-        widget.load(url, {
-          show_artwork: false
-        });
-      });
-    });
-
-  }());
-
-      </script>
+		<iframe id="iframe" width="25%" height="150" scrolling="no" frameborder="no" src={{ url }}>
+      	</iframe>
+      	<script type="text/javascript" src="../static/js/api.js"></script>
+	    <script>
+	      var startInMilliseconds = Number({{ start }}) * 1000;
+	      var endInMilliseconds = Number({{ end }}) * 1000;
+	      (function(){
+    		var widgetIFrame = document.getElementById('iframe');
+	      	var widget = SC.Widget(widgetIFrame);
+			widget.bind(SC.Widget.Events.READY, function() {
+	    		widget.play();
+	      	});
+	      	widget.bind(SC.Widget.Events.PLAY_PROGRESS, function (callback) {
+		      	var pos = callback.relativePosition;
+		      	var currPos = callback.currentPosition;
+		      	console.log(currPos);
+		      	if (pos < 0.003) {
+		      		widget.pause();
+		      		widget.seekTo(startInMilliseconds);
+		      		widget.play();
+		      	}
+		      	else if (currPos >= endInMilliseconds - 5000 && currPos <= endInMilliseconds - 4000) {
+		      		widget.setVolume(0.75);
+		      	}
+		      	else if (currPos > endInMilliseconds - 4000 && currPos <= endInMilliseconds - 3000) {
+		      		widget.setVolume(0.5);
+		      	}
+		      	else if (currPos > endInMilliseconds - 3000 && currPos <= endInMilliseconds - 2000) {
+		      		widget.setVolume(0.25);
+		      	}
+		      	else if (currPos > endInMilliseconds - 2000 && currPos <= endInMilliseconds - 1000) {
+		      		widget.setVolume(0.1);
+		      	}
+		      	else if (currPos >= endInMilliseconds) {
+		      		widget.pause();
+		      	}
+	      	});
+	      
+	  	}());
+	    </script>
 		{% endif %}
 	</div>
 {% endblock %}

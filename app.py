@@ -104,12 +104,15 @@ def findStartInterval(hashmap):
 			key -= 1
 	return key
 
+
 @app.route('/')
 def home():
 	return render_template('index.html')
 
+
 @app.route('/play', methods=['POST'])
 def play():
+	""" play gets the user input and parses it accordingly """
 	link = request.form['inputBox']
 	print "received"
 	print link

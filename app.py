@@ -126,7 +126,7 @@ def play():
 		startTime *= 10
 		context['start'] = startTime
 		context['end'] = endTime
-		context['url'] = "https://w.soundcloud.com/player/?url=" + link
+		context['url'] = "https://w.soundcloud.com/player/?url=" + link + "&color=83d2ce"+"&autoplay=false"
 	return render_template('play.html', **context)
 
 

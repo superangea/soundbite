@@ -2,7 +2,7 @@
 {% block content %}
 	<div class="main-content">
 		{% if code == -1 %}
-		<p>Uh oh! This url could not be found on SoundCloud.</p>
+			<p>Uh oh! This url could not be found on SoundCloud.</p>
 		{% else %}
 		<p>The most popular part of this song is from {{ start }} to {{ end }}</p>
 		<iframe id="iframe" width="25%" height="150" scrolling="no" frameborder="no" src={{ url }}>
@@ -14,32 +14,37 @@
 	      (function(){
     		var widgetIFrame = document.getElementById('iframe');
 	      	var widget = SC.Widget(widgetIFrame);
+	      	var maxVolume = 1;
+	      	var minVolume = 0;
 			widget.bind(SC.Widget.Events.READY, function() {
+				widget.setVolume(minVolume);
 	    		widget.play();
 	      	});
 	      	widget.bind(SC.Widget.Events.PLAY_PROGRESS, function (callback) {
 		      	var pos = callback.relativePosition;
 		      	var currPos = callback.currentPosition;
-		      	console.log(currPos);
-		      	if (pos < 0.003) {
+		      	if (pos < 0.002) {
 		      		widget.pause();
 		      		widget.seekTo(startInMilliseconds);
+		      		widget.setVolume(maxVolume);
 		      		widget.play();
 		      	}
 		      	else if (currPos >= endInMilliseconds - 5000 && currPos <= endInMilliseconds - 4000) {
-		      		widget.setVolume(0.75);
+		      		widget.setVolume(maxVolume * 0.75);
 		      	}
 		      	else if (currPos > endInMilliseconds - 4000 && currPos <= endInMilliseconds - 3000) {
-		      		widget.setVolume(0.5);
+		      		widget.setVolume(maxVolume * 0.5);
 		      	}
 		      	else if (currPos > endInMilliseconds - 3000 && currPos <= endInMilliseconds - 2000) {
-		      		widget.setVolume(0.25);
+		      		widget.setVolume(maxVolume * 0.35);
 		      	}
 		      	else if (currPos > endInMilliseconds - 2000 && currPos <= endInMilliseconds - 1000) {
-		      		widget.setVolume(0.1);
+		      		widget.setVolume(maxVolume * 0.25);
 		      	}
 		      	else if (currPos >= endInMilliseconds) {
 		      		widget.pause();
+		      		widget.unbind(SC.Widget.Events.PLAY_PROGRESS);
+		      		widget.setVolume(maxVolume);
 		      	}
 	      	});
 	      

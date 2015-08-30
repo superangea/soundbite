@@ -4,8 +4,8 @@
 		{% if code == -1 %}
 			<p>Uh oh! This url could not be found on SoundCloud.</p>
 		{% else %}
-		<p>The most popular part of this song is from {{ start }} to {{ end }}</p>
-		<iframe id="iframe" width="25%" height="150" scrolling="no" frameborder="no" src={{ url }}>
+		<p>The most popular part of this song is from {{ beginTime }} to {{ endTime }}</p>
+		<iframe id="iframe" width="50%" height="150" scrolling="no" frameborder="no" src={{ url }}>
       	</iframe>
       	<script type="text/javascript" src="../static/js/api.js"></script>
 	    <script>
@@ -23,22 +23,23 @@
 	      	widget.bind(SC.Widget.Events.PLAY_PROGRESS, function (callback) {
 		      	var pos = callback.relativePosition;
 		      	var currPos = callback.currentPosition;
-		      	if (pos < 0.002) {
+		      	if (startInMilliseconds === 0) {
+		      		widget.setVolume(maxVolume);
+		      	}
+		      	if (pos < 0.002 && startInMilliseconds !== 0) {
 		      		widget.pause();
 		      		widget.seekTo(startInMilliseconds);
 		      		widget.setVolume(maxVolume);
 		      		widget.play();
 		      	}
-		      	else if (currPos >= endInMilliseconds - 5000 && currPos <= endInMilliseconds - 4000) {
+		      	// fade out volume for last 3 seconds of soundbite
+		      	else if (currPos > endInMilliseconds - 3000 && currPos <= endInMilliseconds - 2000) {
 		      		widget.setVolume(maxVolume * 0.75);
 		      	}
-		      	else if (currPos > endInMilliseconds - 4000 && currPos <= endInMilliseconds - 3000) {
-		      		widget.setVolume(maxVolume * 0.5);
-		      	}
-		      	else if (currPos > endInMilliseconds - 3000 && currPos <= endInMilliseconds - 2000) {
-		      		widget.setVolume(maxVolume * 0.35);
-		      	}
 		      	else if (currPos > endInMilliseconds - 2000 && currPos <= endInMilliseconds - 1000) {
+		      		widget.setVolume(maxVolume * 0.50);
+		      	}
+		      	else if (currPos > endInMilliseconds - 1000 && currPos < endInMilliseconds) {
 		      		widget.setVolume(maxVolume * 0.25);
 		      	}
 		      	else if (currPos >= endInMilliseconds) {
@@ -51,5 +52,6 @@
 	  	}());
 	    </script>
 		{% endif %}
+		<p>Discover another song, playlist, or artist:</p>
 	</div>
 {% endblock %}

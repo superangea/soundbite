@@ -1,18 +1,132 @@
+* {
+	box-sizing: border-box;
+}
+
+/* Header and logo
+================================ */
+#header {
+	background-color: #FFFFF3;
+	width: 100%;
+	display: block;
+	height: 260px;
+}
+
+#logo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding:20px 10px 10px 10px;
+	height: 250px;
+
+}
+
+/* Content on index.html
+================================ */
+.main-content {
+	width: 90%;
+	margin: auto;
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 1.2em;
+	text-align: center;
+	width: 70%;
+	margin: auto;
+	padding:0;
+}
+
 body {
-/*	background-image: url("../background.jpeg");
-	background-repeat: no-repeat;
-	background-position: center;*/
-	/*background: rgb(193, 224, 216);*/
-	background: rgb(131, 210, 206);
-	font-family: 'Bitter', serif;
+	background: #FFFFF3;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.search {
+	display: block;
+	width: 50%;
+	margin: auto;
+}
+
+h2 {
+	margin: auto;
+	padding-top: 30px;
+	color: rgb(0, 174, 239);
+}
+
+
+/* For content in play.html 
+================================ */
+.primary-content {
+	margin-top: 10px;
+	margin-bottom: 50px;
+}
+
+.primary-content p {
+	text-align: center;
+	font-size: 1.5em;
+}
+
+/*For search bar and button 
+================================ */
+
+#search-label {
+	font-size: 1.5em;
+	width: 50%;
+	margin: auto;
+	text-align: center;
 }
 
 input[type=text] {
+	width: 75%;
+	height: 40px;
+	margin: auto;
+	margin-top: 0;
+	margin-bottom: 15px;
+	display: block;
+	background: inherit;
+	margin-top: 20px;
 	border: 0;
-	border-bottom: 2px solid #bbb
+	border-bottom: 2px solid rgb(27, 20, 100);
 	outline: 0;
+	color: rgb(27, 20, 100);
+	font-size: 1.5em;
+
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #FFFFF3 inset;
 }
 
 input[type=text]:hover {
-	border: none;
+	
 }
+
+input[type=submit] {
+	width: 120px;
+	height: 30px;
+	display: block;
+	margin: auto;
+	background-color: rgb(240, 91, 113);
+	border: none;
+	border-radius: 5px;
+	font-weight: bold;
+	color: rgb(27, 20, 100);
+}
+
+/* For footer styling
+================================ */
+footer {
+	position: fixed;
+	bottom: 0;
+	margin-left: 15px;
+	display: block;
+	color: rgb(27, 20, 100);
+	font-size: 1em;
+	text-align: center;
+}
+
+#footer-link {
+	color: rgb(240, 91, 113);
+	text-decoration: none;
+}
+
+
+

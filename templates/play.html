@@ -1,57 +1,66 @@
 {% extends "layout.html" %}
 {% block content %}
 	<div class="main-content">
-		{% if code == -1 %}
-			<p>Uh oh! This url could not be found on SoundCloud.</p>
-		{% else %}
-		<p>The most popular part of this song is from {{ beginTime }} to {{ endTime }}</p>
-		<iframe id="iframe" width="50%" height="150" scrolling="no" frameborder="no" src={{ url }}>
-      	</iframe>
-      	<script type="text/javascript" src="../static/js/api.js"></script>
-	    <script>
-	      var startInMilliseconds = Number({{ start }}) * 1000;
-	      var endInMilliseconds = Number({{ end }}) * 1000;
-	      (function(){
-    		var widgetIFrame = document.getElementById('iframe');
-	      	var widget = SC.Widget(widgetIFrame);
-	      	var maxVolume = 1;
-	      	var minVolume = 0;
-			widget.bind(SC.Widget.Events.READY, function() {
-				widget.setVolume(minVolume);
-	    		widget.play();
-	      	});
-	      	widget.bind(SC.Widget.Events.PLAY_PROGRESS, function (callback) {
-		      	var pos = callback.relativePosition;
-		      	var currPos = callback.currentPosition;
-		      	if (startInMilliseconds === 0) {
-		      		widget.setVolume(maxVolume);
-		      	}
-		      	if (pos < 0.002 && startInMilliseconds !== 0) {
-		      		widget.pause();
-		      		widget.seekTo(startInMilliseconds);
-		      		widget.setVolume(maxVolume);
-		      		widget.play();
-		      	}
-		      	// fade out volume for last 3 seconds of soundbite
-		      	else if (currPos > endInMilliseconds - 3000 && currPos <= endInMilliseconds - 2000) {
-		      		widget.setVolume(maxVolume * 0.75);
-		      	}
-		      	else if (currPos > endInMilliseconds - 2000 && currPos <= endInMilliseconds - 1000) {
-		      		widget.setVolume(maxVolume * 0.50);
-		      	}
-		      	else if (currPos > endInMilliseconds - 1000 && currPos < endInMilliseconds) {
-		      		widget.setVolume(maxVolume * 0.25);
-		      	}
-		      	else if (currPos >= endInMilliseconds) {
-		      		widget.pause();
-		      		widget.unbind(SC.Widget.Events.PLAY_PROGRESS);
-		      		widget.setVolume(maxVolume);
-		      	}
-	      	});
-	      
-	  	}());
-	    </script>
-		{% endif %}
-		<p>Discover another song, playlist, or artist:</p>
+		<div class="primary-content">
+			{% if code == -1 %}
+				<p>Uh oh! This url could not be found on SoundCloud.</p>
+				<img id="logo" src="../static/logo-big.png">
+			{% else %}
+				<p>The most popular part of this song is from {{ beginTime }} to {{ endTime }}</p>
+				<iframe id="iframe" width="50%" height="150" scrolling="no" frameborder="no" src={{ url }}>
+		      	</iframe>
+		      	<script type="text/javascript" src="../static/js/api.js"></script>
+			    <script>
+			      var startInMilliseconds = Number({{ start }}) * 1000;
+			      var endInMilliseconds = Number({{ end }}) * 1000;
+			      (function(){
+		    		var widgetIFrame = document.getElementById('iframe');
+			      	var widget = SC.Widget(widgetIFrame);
+			      	var maxVolume = 1;
+			      	var minVolume = 0;
+					widget.bind(SC.Widget.Events.READY, function() {
+						widget.setVolume(minVolume);
+			    		widget.play();
+			      	});
+			      	widget.bind(SC.Widget.Events.PLAY_PROGRESS, function (callback) {
+				      	var pos = callback.relativePosition;
+				      	var currPos = callback.currentPosition;
+				      	if (startInMilliseconds === 0) {
+				      		widget.setVolume(maxVolume);
+				      	}
+				      	if (pos < 0.002 && startInMilliseconds !== 0) {
+				      		widget.pause();
+				      		widget.seekTo(startInMilliseconds);
+				      		widget.setVolume(maxVolume);
+				      		widget.play();
+				      	}
+				      	// fade out volume for last 3 seconds of soundbite
+				      	else if (currPos > endInMilliseconds - 3000 
+				      		&& currPos <= endInMilliseconds - 2000) {
+				      		widget.setVolume(maxVolume * 0.75);
+				      	}
+				      	else if (currPos > endInMilliseconds - 2000 
+				      		&& currPos <= endInMilliseconds - 1000) {
+				      		widget.setVolume(maxVolume * 0.50);
+				      	}
+				      	else if (currPos > endInMilliseconds - 1000 
+				      		&& currPos < endInMilliseconds) {
+				      		widget.setVolume(maxVolume * 0.25);
+				      	}
+				      	else if (currPos >= endInMilliseconds) {
+				      		widget.pause();
+				      		widget.unbind(SC.Widget.Events.PLAY_PROGRESS);
+				      		widget.setVolume(maxVolume);
+				      	}
+			      	});
+			      
+			  	}());
+			    </script>
+			{% endif %}
+		</div>
+		<div id="search-label">
+			<p>Discover another song:</p>
+		</div>
+		
 	</div>
 {% endblock %}

@@ -152,7 +152,7 @@ footer {
 	================================ */
 	.main-content {
 		width: 90%;
-		font-size: 1.2em;
+		font-size: 1.3em;
 	}
 
 	.search {
@@ -161,6 +161,12 @@ footer {
 
 	h2 {
 		padding-top: 20px;
+	}
+
+	/*For search bar and button 
+	================================ */
+	input[type=text] {
+		font-size: 1.7em;
 	}
 
 	/* For content in play.html and/or 404.html
@@ -173,6 +179,7 @@ footer {
 	================================ */
 	footer {
 		margin-top: 20px;
+		font-size: 1.25em;
 	}
 
 }
@@ -183,7 +190,7 @@ footer {
 	/* Header and logo
 	================================ */
 	#header {
-		margin-top: 50px;
+		margin-top: 40px;
 	}
 
 
@@ -213,7 +220,6 @@ footer {
 	================================ */
 	input[type=text] {
 		width: 95%;
-		font-size: 1.5em;
 	}
 
 	input[type=submit] {

@@ -48,6 +48,12 @@ h2 {
 	color: rgb(0, 174, 239);
 }
 
+#exampleLink:hover {
+	text-decoration: underline;
+	color: rgb(240, 91, 113);
+	cursor: pointer;
+}
+
 /* For content in play.html and/or 404.html
 ================================ */
 

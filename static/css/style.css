@@ -2,6 +2,7 @@
 	box-sizing: border-box;
 }
 
+
 /* Header and logo
 ================================ */
 #header {
@@ -22,7 +23,7 @@
 /* Content on index.html
 ================================ */
 .main-content {
-	width: 95%;
+	width: 90%;
 	margin: auto;
 	margin-top: 0;
 	margin-bottom: 0;
@@ -54,6 +55,12 @@ h2 {
 	width: 90%;
 	height: 150px;
 }
+.primary-content {
+	width: 90%;
+	margin: auto;
+	margin-top: 30px;
+}
+
 .primary-content h2 {
 	margin-top: 10px;
 	text-align: center;
@@ -88,7 +95,7 @@ input[type=text] {
 	border-bottom: 2px solid rgb(27, 20, 100);
 	outline: 0;
 	color: rgb(27, 20, 100);
-	font-size: 1.12em;
+	font-size: 1em;
 
 }
 
@@ -127,10 +134,13 @@ footer {
 
 
 
-@media (min-width: 500px) {
+
+
+@media screen and (min-width: 500px) {
 	/* Header and logo
 	================================ */
 	#header {
+		margin-top: 100px;
 		height: 260px;
 	}
 
@@ -153,11 +163,30 @@ footer {
 		padding-top: 20px;
 	}
 
+	/* For content in play.html and/or 404.html
+	================================ */
+	.primary-content {
+		margin-top: 120px;
+	}
+
+	/* For footer styling
+	================================ */
+	footer {
+		margin-top: 20px;
+	}
+
 }
 
 
 
-@media (min-width: 800px) {
+@media screen and (min-width: 801px) {
+	/* Header and logo
+	================================ */
+	#header {
+		margin-top: 50px;
+	}
+
+
 	/* Content on index.html
 	================================ */
 	.main-content {
@@ -177,7 +206,6 @@ footer {
 	.primary-content {
 		width: 90%;
 		margin: auto;
-		margin-top: 10px;
 		margin-bottom: 50px;
 	}
 
@@ -195,6 +223,7 @@ footer {
 	/* For footer styling
 	================================ */
 	footer {
+		margin-top: 0px;
 		position: fixed;
 		bottom: 0;
 		margin-left: 15px;

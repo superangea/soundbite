@@ -133,7 +133,7 @@ def convertTime(timeInSeconds):
 
 
 @app.route('/')
-def home():
+def index():
   """ home page """
   return render_template('index.html')
 
@@ -165,9 +165,18 @@ def play():
   return render_template('play.html', **context)
 
 
+@app.errorhandler(404)
+def pageNotFound1(e):
+  return render_template('404.html'), 404
+
+
+@app.errorhandler(405)
+def methodNotFound(e):
+  return render_template('404.html'), 405
+  
 
 if __name__ == '__main__':
-  app.run()
+  app.run(debug=True)
   
   
 

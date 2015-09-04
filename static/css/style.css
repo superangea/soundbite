@@ -52,13 +52,17 @@ h2 {
 }
 
 
-/* For content in play.html 
+/* For content in play.html and/or 404.html
 ================================ */
 .primary-content {
 	margin-top: 10px;
 	margin-bottom: 50px;
 }
 
+.primary-content h2 {
+	text-align: center;
+	font-size: 2em;
+}
 .primary-content p {
 	text-align: center;
 	font-size: 1.5em;
@@ -93,10 +97,6 @@ input[type=text] {
 
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px #FFFFF3 inset;
-}
-
-input[type=text]:hover {
-	
 }
 
 input[type=submit] {

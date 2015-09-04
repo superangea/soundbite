@@ -1,5 +1,3 @@
-#! /usr/bin/python
-
 from flask import Flask, render_template, request, url_for, redirect, make_response
 import soundcloud
 import requests
@@ -169,7 +167,7 @@ def play():
 
 
 if __name__ == '__main__':
-  app.run(debug=True)
+  app.run()
   
   
 

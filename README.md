@@ -1,5 +1,5 @@
 # soundBite
-SoundBite finds and plays the "best" 30 seconds of a song according to listeners' comments. Useful for discovering new music on SoundCloud to quickly determine if a song is to your taste or not. 
+SoundBite finds and plays the "best" 30 seconds of a song according to listeners' comments. Useful for discovering new music on SoundCloud by quickly determining if a song is to your taste or not. 
 
 Why?  
 SoundCloud allows listeners to comment on a song at the exact time they want to. Most people don't bother to comment on a song 

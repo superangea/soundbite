@@ -51,9 +51,6 @@ def parseData(link):
     part, or -1 if the input is not valid
   parseData: string -> dict(int, int) """
 
-  # tracks = client.get('/tracks', q='felix jaehn')
-  #link = "https://soundcloud.com/owslaofficial/what-so-not-high-you-are-1?in=samueljervis/sets/melodic-house"
-  #track = client.get('/tracks/125621283')
   data = {}
   data['inputType'] = 0
   data['startTime'] = -1
@@ -61,23 +58,20 @@ def parseData(link):
     userInput = client.get('/resolve', url=link)
     if userInput.kind == 'playlist': 
       print userInput.track_count
-
       track_id = userInput.tracks[0][u'id']
       length = userInput.tracks[0][u'duration']
       data['inputType'] = 1
       data['startTime'] = getTrackComments(track_id, length)
     elif userInput.kind == 'user':
-      pass
+      tracks = client.get('users/%d/tracks' % userInput.id)
+      track_id = tracks[0].id
+      length = tracks[0].duration
+      data['inputType'] = 1
+      data['startTime'] = getTrackComments(track_id, length)
     elif userInput.kind == 'track':
       data['startTime'] = getTrackComments(userInput.id, userInput.duration)
   except requests.exceptions.HTTPError:
     print 'Uh oh! This track cannot be found.'
-    try:
-      search = client.get('/tracks', q=link)
-      for track in search:
-        print track.title
-    except Exception, e:
-      print link + " cannot be found"
   return data
 
 

@@ -8,29 +8,25 @@
 	background-color: #FFFFF3;
 	width: 100%;
 	display: block;
-	height: 260px;
+	height: 220px;
 }
 
 #logo {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	padding:20px 10px 10px 10px;
-	height: 250px;
+	padding:20px 0px 0px 0px;
+	height: 200px;
 
 }
-
 /* Content on index.html
 ================================ */
 .main-content {
-	width: 90%;
+	width: 95%;
 	margin: auto;
 	margin-top: 0;
 	margin-bottom: 0;
-	font-size: 1.2em;
 	text-align: center;
-	width: 70%;
-	margin: auto;
 	padding:0;
 }
 
@@ -41,25 +37,25 @@ body {
 
 .search {
 	display: block;
-	width: 50%;
+	width: 100%;
 	margin: auto;
 }
 
 h2 {
 	margin: auto;
-	padding-top: 30px;
+	padding-top: 0px;
 	color: rgb(0, 174, 239);
 }
 
-
 /* For content in play.html and/or 404.html
 ================================ */
-.primary-content {
-	margin-top: 10px;
-	margin-bottom: 50px;
-}
 
+#iframe {
+	width: 90%;
+	height: 150px;
+}
 .primary-content h2 {
+	margin-top: 10px;
 	text-align: center;
 	font-size: 2em;
 }
@@ -68,18 +64,19 @@ h2 {
 	font-size: 1.5em;
 }
 
+
 /*For search bar and button 
 ================================ */
 
 #search-label {
 	font-size: 1.5em;
-	width: 50%;
+	width: 80%;
 	margin: auto;
 	text-align: center;
 }
 
 input[type=text] {
-	width: 75%;
+	width: 85%;
 	height: 40px;
 	margin: auto;
 	margin-top: 0;
@@ -91,7 +88,7 @@ input[type=text] {
 	border-bottom: 2px solid rgb(27, 20, 100);
 	outline: 0;
 	color: rgb(27, 20, 100);
-	font-size: 1.5em;
+	font-size: 1.12em;
 
 }
 
@@ -100,26 +97,26 @@ input:-webkit-autofill {
 }
 
 input[type=submit] {
-	width: 120px;
-	height: 30px;
+	width: 85%;
+	height: 40px;
 	display: block;
 	margin: auto;
 	background-color: rgb(240, 91, 113);
 	border: none;
 	border-radius: 5px;
 	font-weight: bold;
+	font-size: 1.3em;
 	color: rgb(27, 20, 100);
 }
 
 /* For footer styling
 ================================ */
 footer {
-	position: fixed;
-	bottom: 0;
-	margin-left: 15px;
 	display: block;
+	margin: auto;
+	padding-top: 10px;
 	color: rgb(27, 20, 100);
-	font-size: 1em;
+	font-size: .75em;
 	text-align: center;
 }
 
@@ -128,5 +125,81 @@ footer {
 	text-decoration: none;
 }
 
+
+
+@media (min-width: 500px) {
+	/* Header and logo
+	================================ */
+	#header {
+		height: 260px;
+	}
+
+	#logo {
+		height: 250px;
+	}
+
+	/* Content on index.html
+	================================ */
+	.main-content {
+		width: 90%;
+		font-size: 1.2em;
+	}
+
+	.search {
+		width: 100%;
+	}
+
+	h2 {
+		padding-top: 20px;
+	}
+
+}
+
+
+
+@media (min-width: 800px) {
+	/* Content on index.html
+	================================ */
+	.main-content {
+		width: 70%;
+	}
+
+	.search {
+		width: 50%;
+	}
+
+	h2 {
+		padding-top: 30px;
+	}
+
+	/* For content in play.html and/or 404.html
+	================================ */
+	.primary-content {
+		width: 90%;
+		margin: auto;
+		margin-top: 10px;
+		margin-bottom: 50px;
+	}
+
+	/*For search bar and button 
+	================================ */
+	input[type=text] {
+		width: 95%;
+		font-size: 1.5em;
+	}
+
+	input[type=submit] {
+		width: 33%;
+	}
+
+	/* For footer styling
+	================================ */
+	footer {
+		position: fixed;
+		bottom: 0;
+		margin-left: 15px;
+		font-size: 1em;
+	}
+}
 
 

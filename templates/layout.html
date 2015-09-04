@@ -14,7 +14,7 @@
 			{% block content %}{% endblock %}
 			<div class="search">
 				<form id="submitTrack" action="{{ url_for('play') }}" method="POST">
-					<input type="text" name="inputBox" placeholder='Enter a SoundCloud song URL to jam!'>
+					<input id="inputBox" type="text" name="inputBox" placeholder='Enter a SoundCloud song URL to jam!' value="">
 					<input type="submit" name="submitButton" id="submit" value="Jam!">
 				</form>
 			</div>
